@@ -7,6 +7,13 @@ export interface Game {
     name: string;
     released: string;
     background_image: string;
+    platforms: Platform[];
+}
+
+interface Platform {
+    id: number;
+    name: string;
+    slug: string;
 }
 
 interface FetchGamesResponse {

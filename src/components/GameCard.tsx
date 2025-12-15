@@ -1,5 +1,5 @@
 import { Game } from "@/hooks/useGames";
-import { Card, Image, Button, Heading } from "@chakra-ui/react";
+import { Card, Image, Heading, Text } from "@chakra-ui/react";
 
 interface GameCardProps {
     game: Game
@@ -16,7 +16,7 @@ function GameCard({game}: GameCardProps) {
                 <Heading>{game.name}</Heading>
             </Card.Body>
             <Card.Footer>
-                <Button>Play</Button>
+                <Text>{game.platforms.map(({name}) => name).join(', ')}</Text>
             </Card.Footer>
         </Card.Root>
     )
