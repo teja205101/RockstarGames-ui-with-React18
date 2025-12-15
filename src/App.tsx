@@ -25,7 +25,6 @@ function App() {
           Aside
         </GridItem>  
       </Grid>
-
       <GameGrid />
     </>
   )
