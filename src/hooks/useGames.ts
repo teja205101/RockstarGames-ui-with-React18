@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-clients";
 import { CanceledError } from "axios";
 
-interface Game {
+export interface Game {
     id: string;
     name: string;
     released: string;
@@ -23,6 +23,7 @@ function useGames() {
                 signal: controller.signal
             })
                 .then((response)=>{
+                    console.log(response.data.data);
                     setGames(response.data.data);
                 }).catch((error)=>{
                     if( error instanceof CanceledError) return;
