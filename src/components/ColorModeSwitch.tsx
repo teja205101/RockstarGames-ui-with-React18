@@ -5,7 +5,7 @@ import { Switch } from './ui/switch'
 function ColorModeSwitch() {
   const { toggleColorMode, colorMode } = useColorMode()
   return (
-    <HStack justifyContent="space-between">
+    <HStack>
       {/* <Button variant="outline" onClick={toggleColorMode}>
          Toggle Mode
          </Button> */}
