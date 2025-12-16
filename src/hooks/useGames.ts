@@ -5,7 +5,6 @@ import { CanceledError } from "axios";
 export interface Platform {
     id: string;
     name: string;
-    slug: string; 
 }
 
 export interface Game {
@@ -13,6 +12,7 @@ export interface Game {
     name: string;
     released: string;
     background_image: string;
+    suggestions_count: number;
     platforms: Platform[];
 }
 
@@ -22,15 +22,14 @@ interface FetchGamesResponse {
 
 function useGames() {
     const [games, setGames] = useState<Game[]>([]);
-        const [error, setError] = useState('');
+    const [error, setError] = useState('');
     
-        useEffect(()=>{
+    useEffect(()=>{
             const controller = new AbortController();
             apiClient.get<FetchGamesResponse>('/games/infinite-scroll', {
                 signal: controller.signal
             })
                 .then((response)=>{
-                    console.log(response.data.data);
                     setGames(response.data.data);
                 }).catch((error)=>{
                     if( error instanceof CanceledError) return;
