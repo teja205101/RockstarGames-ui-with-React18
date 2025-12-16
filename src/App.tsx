@@ -14,16 +14,13 @@ function App() {
 
       <Grid
         templateAreas={{
-          base: `"nav main"`,
-          lg: `"nav nav" "aside main"`,
+          base: `"nav"`,
+          lg: `"nav"`,
         }}
       >
         <GridItem area="nav" bg="white">
           <NavBar />
         </GridItem>
-        <GridItem area="aside" bg="green" hideBelow="lg">
-          Aside
-        </GridItem>  
       </Grid>
       <GameGrid />
     </>
