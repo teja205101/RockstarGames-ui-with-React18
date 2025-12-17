@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <HStack>
       <Image src={logo} alt="logo" boxSize={'60px'} />
-      <Text fontSize={'2xl'} fontWeight={'bold'} color="black">
+      <Text fontSize={'2xl'} fontWeight={'bold'}>
         GameHub
       </Text>
       <ColorModeSwitch />
