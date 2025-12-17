@@ -12,7 +12,7 @@ function GameCard({game}: GameCardProps) {
 
     return (
         <Card.Root borderRadius={10} overflow="hidden" h="400px" cursor="pointer" width="fit-content">
-            <Image src={game.background_image} alt={game.name} h="200px" objectFit="cover"/>
+            <Image src={game.background_image} alt={game.name} h="200px" />
             <Card.Body>
                 <Heading size="xl">{game.name}</Heading>
             </Card.Body>
