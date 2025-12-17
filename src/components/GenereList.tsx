@@ -1,13 +1,17 @@
+import { HStack, Spinner } from "@chakra-ui/react";
 import useGeners from "../hooks/useGeners";
 
 function GenereList() {
     const {genres, error, loading} = useGeners();
+
+    if (loading) return <Spinner />;
+    
+    if (error) return null;
+    
     return (
         <>
-        {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
         {genres.map((genre) => (
-            <div key={genre.id}>{genre.name}</div>
+            <HStack key={genre.id}>{genre.name}</HStack>
         ))}
         </>
     )
