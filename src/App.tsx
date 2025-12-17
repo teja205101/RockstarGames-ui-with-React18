@@ -1,28 +1,23 @@
 // import { Button, ButtonGroup } from "@chakra-ui/react"
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem, Box } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
 import GameGrid from './components/GameGrid'
+import GenereList from './components/GenereList'
+// import { Show } from '@chakra-ui/react'
 
 function App() {
   return (
     <>
-      {/* <ButtonGroup attached variant="solid">
-         <Button colorPalette="blue">Button 1</Button>
-         <Button colorPalette="red">Button 2</Button>
-         <Button colorPalette="green">Button 3</Button>
-     </ButtonGroup> */}
 
-      <Grid
-        templateAreas={{
-          base: `"nav"`,
-          lg: `"nav"`,
-        }}
-      >
-        <GridItem area="nav" bg="white">
-          <NavBar />
-        </GridItem>
-      </Grid>
-      <GameGrid />
+    <Grid templateAreas={{
+      base: `"nav aside main"`, 
+      lg: `"nav nav" "aside main"`
+      }}>
+      {/* <GridItem area="nav" bg="coral">Nav</GridItem> */}
+      <GridItem area="nav"><NavBar /></GridItem>
+      <GridItem area="aside" hideBelow="lg"><GenereList /></GridItem> 
+      <GridItem area="main" ><GameGrid /></GridItem>
+    </Grid>
     </>
   )
 }

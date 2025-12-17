@@ -16,7 +16,7 @@ export interface Game {
     platforms: Platform[];
 }
 
-interface FetchGamesResponse {
+export interface FetchGamesResponse {
     data: Game[];
 }
 
