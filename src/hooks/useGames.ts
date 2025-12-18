@@ -7,6 +7,10 @@ export interface Platform {
     name: string;
 }
 
+interface Genre {
+    id: string;
+    name: string;
+}
 export interface Game {
     id: string;
     name: string;
@@ -14,6 +18,7 @@ export interface Game {
     background_image: string;
     suggestions_count: number;
     platforms: Platform[];
+    genres: Genre[];
 }
 
 export interface FetchGamesResponse {
