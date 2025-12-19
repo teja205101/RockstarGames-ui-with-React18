@@ -17,7 +17,7 @@ function App() {
       }}>
       {/* <GridItem area="nav" bg="coral">Nav</GridItem> */}
       <GridItem area="nav"><NavBar /></GridItem>
-      <GridItem area="aside" hideBelow="lg"><GenereList onSelectGenre={(genre) => setSelctedGenere(genre)}/></GridItem> 
+      <GridItem area="aside" hideBelow="lg"><GenereList selectedGenre={selectedGenere} onSelectGenre={(genre) => setSelctedGenere(genre)}/></GridItem> 
       <GridItem area="main" ><GameGrid selectedGenere={selectedGenere}/></GridItem>
     </Grid>
     </>
