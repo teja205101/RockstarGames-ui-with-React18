@@ -3,6 +3,7 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import { Genre } from '../hooks/useGeners';
+import PlatformSelector from './PlatformSelector';
 
 interface GameGridProps {
     selectedGenere : Genre | null;
@@ -21,6 +22,7 @@ function GameGrid({selectedGenere}: GameGridProps) {
         <>
         {error && <Text>{error}</Text>}
         <SimpleGrid columns={{sm:1,md: 2, lg: 3, xl: 5}} gap={10} padding={10}>
+            <PlatformSelector/>
             {loading && skeletons.map((skeleton)=>(
                 <GameCardSkeleton key={skeleton}/>
             ))}
