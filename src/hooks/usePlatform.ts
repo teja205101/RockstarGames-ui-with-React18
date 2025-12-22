@@ -14,7 +14,7 @@ interface FetchPlatformsResponse {
 }
 
 function usePlatform() {
-    const [platforms, setPlatforms] = useState<Platform[]>([]);
+    const [platforms, setPlatforms] = useState<string[]>([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -35,14 +35,14 @@ function usePlatform() {
                 let platformsArray: string[] = [];
                 const filterPlatforms = uniquePlatforms.filter((platform: Platform) => platformsArray.push(platform.name));
 
-                console.log('platforms :', platformsArray);
+                // console.log('platforms :', platformsArray);
 
-                let uniquePlatformsArray: string[] = [];
-                uniquePlatformsArray = [...new Set(platformsArray)]
+                // uniquePlatformsArray: string[] = [];
+                let uniquePlatformsArray: string[] = [...new Set(platformsArray)]
 
                 console.log('uniquePlatforms :', uniquePlatformsArray);
 
-                setPlatforms(uniquePlatforms);
+                setPlatforms(uniquePlatformsArray);
                 setLoading(false);
             })
             .catch((error) => {

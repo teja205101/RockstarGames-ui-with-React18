@@ -6,6 +6,8 @@ function PlatformSelector({onPlatformSelect}: {onPlatformSelect: (platformId: st
     if (error) return <div>{error}</div>
     if (loading) return <div>Loading...</div>
 
+    console.log("platforms :", platforms);
+
     return (
       <Menu.Root>
         {/* @ts-expect-error - Chakra UI v3 type definition missing children prop for Menu.Trigger */}
@@ -16,8 +18,8 @@ function PlatformSelector({onPlatformSelect}: {onPlatformSelect: (platformId: st
         <Menu.Positioner>
           {/* @ts-expect-error - Chakra UI v3 type definition missing children prop for Menu.Trigger */}
           <Menu.Content>
-            {platforms.map((platform) => (
-              <Menu.Item key={platform} value={platform}>{platform}</Menu.Item>
+            {platforms.map((platform : any, index : number) => (
+              <Menu.Item key={index}>{platform}</Menu.Item>
             ))}
           </Menu.Content>
         </Menu.Positioner>
