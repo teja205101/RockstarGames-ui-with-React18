@@ -1,37 +1,49 @@
-import { SimpleGrid, Text } from '@chakra-ui/react';
-import useGames from '../hooks/useGames';
-import GameCard from './GameCard';
-import GameCardSkeleton from './GameCardSkeleton';
-import { Genre } from '../hooks/useGeners';
-import PlatformSelector from './PlatformSelector';
+import { useState } from 'react'
+import { SimpleGrid, Text } from '@chakra-ui/react'
+import useGames from '../hooks/useGames'
+import GameCard from './GameCard'
+import GameCardSkeleton from './GameCardSkeleton'
+import { Genre } from '../hooks/useGeners'
+import PlatformSelector from './PlatformSelector'
 
 interface GameGridProps {
-    selectedGenere : Genre | null;
+  selectedGenere: Genre | null
 }
-function GameGrid({selectedGenere}: GameGridProps) {
-    const {games, error, loading} = useGames();
-    const skeletons = [1,2,3,4,5,6];
+function GameGrid({ selectedGenere }: GameGridProps) {
+  const { games, error, loading } = useGames()
+  const skeletons = [1, 2, 3, 4, 5, 6]
 
-    const filteredGames = games.filter((game)=>{
-        if(selectedGenere === null) return game;
-        return game?.genres?.filter((genre)=> genre.name === selectedGenere?.name).length > 0;
-    })
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
 
+  const filteredGames = games.filter((game) => {
+    const genreMatch = selectedGenere
+      ? game?.genres?.some((genre) => genre.name === selectedGenere.name)
+      : true
 
-    return (
-        <>
-        {error && <Text>{error}</Text>}
-        <SimpleGrid columns={{sm:1,md: 2, lg: 3, xl: 5}} gap={10} padding={10}>
-            <PlatformSelector/>
-            {loading && skeletons.map((skeleton)=>(
-                <GameCardSkeleton key={skeleton}/>
-            ))}
-            {filteredGames.map(game => (
-                <GameCard game={game} key={game.id}/>
-            ))}
-        </SimpleGrid>
-        </>
-    )
+    const platformMatch = selectedPlatform
+      ? game?.platforms?.some((platform) => platform.name === selectedPlatform)
+      : true
+
+    return genreMatch && platformMatch
+  })
+
+  return (
+    <>
+      {error && <Text>{error}</Text>}
+      <PlatformSelector setPlatform={setSelectedPlatform} />
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        gap={10}
+        padding={10}
+      >
+        {loading &&
+          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+        {filteredGames.map((game) => (
+          <GameCard game={game} key={game.id} />
+        ))}
+      </SimpleGrid>
+    </>
+  )
 }
 
-export default GameGrid;
+export default GameGrid
