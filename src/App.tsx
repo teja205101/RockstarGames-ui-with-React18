@@ -23,8 +23,6 @@ function App() {
           <Button
             onClick={() => {
               setSelctedGenere(null)
-              console.log('Filters cleared')
-              console.clear()
             }}
           >
             Clear Filters
