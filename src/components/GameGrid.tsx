@@ -1,9 +1,10 @@
-import { SimpleGrid, Text } from '@chakra-ui/react'
+import { SimpleGrid, Text, HStack } from '@chakra-ui/react'
 import useGames from '../hooks/useGames'
 import GameCard from './GameCard'
 import GameCardSkeleton from './GameCardSkeleton'
 import PlatformSelector from './PlatformSelector'
 import { GameQuery } from '../App'
+import SortSelector from './SortSelector'
 
 interface GameGridProps {
   gameQuery: GameQuery
@@ -30,9 +31,12 @@ function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <PlatformSelector
-        setPlatform={(platform) => onSelectPlatform(platform)}
-      />
+      <HStack spacing={2} align="center" padding={5}>
+        <PlatformSelector
+          setPlatform={(platform) => onSelectPlatform(platform)}
+        />
+        <SortSelector />
+      </HStack>
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         gap={10}

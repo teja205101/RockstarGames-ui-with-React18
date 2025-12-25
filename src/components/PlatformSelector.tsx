@@ -6,13 +6,11 @@ interface platformSelectorProps {
 }
 
 function PlatformSelector({ setPlatform }: platformSelectorProps) {
-  const { platforms, error, loading } = usePlatform()
-  if (error) return <div>{error}</div>
-  if (loading) return <div>Loading...</div>
+  const { platforms } = usePlatform()
 
   return (
     <Menu.Root>
-      <Menu.Trigger asChild>
+      <Menu.Trigger>
         <Button variant="outline" size="sm">
           Platform
         </Button>
