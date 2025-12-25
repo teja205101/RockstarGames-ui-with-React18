@@ -12,15 +12,12 @@ function PlatformSelector({ setPlatform }: platformSelectorProps) {
 
   return (
     <Menu.Root>
-      {/* @ts-expect-error - Chakra UI v3 type definition missing children prop for Menu.Trigger */}
       <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
           Platform
         </Button>
       </Menu.Trigger>
-      {/* @ts-expect-error - Chakra UI v3 type definition missing children prop for Menu.Trigger */}
       <Menu.Positioner>
-        {/* @ts-expect-error - Chakra UI v3 type definition missing children prop for Menu.Trigger */}
         <Menu.Content>
           {platforms.map((platform: any, index: number) => (
             <Menu.Item key={index} onClick={() => setPlatform(platform)}>

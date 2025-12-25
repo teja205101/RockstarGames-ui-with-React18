@@ -6,8 +6,13 @@ import { useState } from 'react'
 import { Genre } from './hooks/useGeners'
 import { Button } from '@chakra-ui/react'
 
+export interface GameQuery {
+  genre: Genre | null
+  platform: string | null
+}
+
 function App() {
-  const [selectedGenere, setSelctedGenere] = useState<Genre | null>(null)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
 
   return (
     <>
@@ -22,7 +27,7 @@ function App() {
           <NavBar />{' '}
           <Button
             onClick={() => {
-              setSelctedGenere(null)
+              setGameQuery({ ...gameQuery, genre: null })
             }}
           >
             Clear Filters
@@ -30,12 +35,17 @@ function App() {
         </GridItem>
         <GridItem area="aside" hideBelow="lg">
           <GenereList
-            selectedGenre={selectedGenere}
-            onSelectGenre={(genre) => setSelctedGenere(genre)}
+            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
         </GridItem>
         <GridItem area="main">
-          <GameGrid selectedGenere={selectedGenere} />
+          <GameGrid
+            gameQuery={gameQuery}
+            onSelectPlatform={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
+          />
         </GridItem>
       </Grid>
     </>
