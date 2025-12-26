@@ -3,7 +3,7 @@ import { Menu, Button } from '@chakra-ui/react'
 function SortSelector() {
   return (
     <Menu.Root>
-      <Menu.Trigger>
+      <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
           Sort
         </Button>

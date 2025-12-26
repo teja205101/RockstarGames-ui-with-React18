@@ -9,6 +9,7 @@ import { Button } from '@chakra-ui/react'
 export interface GameQuery {
   genre: Genre | null
   platform: string | null
+  sort: string | null
 }
 
 function App() {

@@ -25,13 +25,15 @@ function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
         )
       : true
 
+    // const sortMatch = gameQuery.sort ? game
+
     return genreMatch && platformMatch
   })
 
   return (
     <>
       {error && <Text>{error}</Text>}
-      <HStack spacing={2} align="center" padding={5}>
+      <HStack gap={2} align="center" padding={5}>
         <PlatformSelector
           setPlatform={(platform) => onSelectPlatform(platform)}
         />

@@ -10,7 +10,7 @@ function PlatformSelector({ setPlatform }: platformSelectorProps) {
 
   return (
     <Menu.Root>
-      <Menu.Trigger>
+      <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
           Platform
         </Button>
