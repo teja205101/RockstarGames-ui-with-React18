@@ -1,20 +1,40 @@
-import { Menu, Button } from '@chakra-ui/react'
+import {
+  Menu,
+  Button,
+  MenuTrigger,
+  MenuPositioner,
+  MenuContent,
+  MenuItem,
+} from '@chakra-ui/react'
 
 function SortSelector() {
+  const sortOptions = [
+    { value: 'name', label: 'Name' },
+    { value: 'suggestions_count', label: 'popularity' },
+    { value: 'rating', label: 'Rating' },
+    { value: 'released', label: 'Released' },
+  ]
   return (
     <Menu.Root>
-      <Menu.Trigger asChild>
+      <MenuTrigger>
         <Button variant="outline" size="sm">
           Sort
         </Button>
-      </Menu.Trigger>
-      <Menu.Positioner>
-        <Menu.Content>
-          <Menu.Item>Sort by Date</Menu.Item>
-          <Menu.Item>Sort by Popularity</Menu.Item>
-          <Menu.Item>Sort by Rating</Menu.Item>
-        </Menu.Content>
-      </Menu.Positioner>
+      </MenuTrigger>
+      <MenuPositioner>
+        <MenuContent>
+          {sortOptions.map((option) => (
+            <MenuItem
+              key={option.value}
+              onClick={() => {
+                console.log(option.value)
+              }}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </MenuContent>
+      </MenuPositioner>
     </Menu.Root>
   )
 }

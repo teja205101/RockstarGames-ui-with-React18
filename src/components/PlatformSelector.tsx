@@ -17,8 +17,12 @@ function PlatformSelector({ setPlatform }: platformSelectorProps) {
       </Menu.Trigger>
       <Menu.Positioner>
         <Menu.Content>
-          {platforms.map((platform: any, index: number) => (
-            <Menu.Item key={index} onClick={() => setPlatform(platform)}>
+          {platforms.map((platform, index) => (
+            <Menu.Item
+              key={index}
+              value={platform}
+              onClick={() => setPlatform(platform)}
+            >
               {platform}
             </Menu.Item>
           ))}

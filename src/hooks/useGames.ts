@@ -1,54 +1,57 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-clients";
-import { CanceledError } from "axios";
+import { useEffect, useState } from 'react'
+import apiClient from '../services/api-clients'
+import { CanceledError } from 'axios'
 
 export interface Platform {
-    id: string;
-    name: string;
+  id: string
+  name: string
 }
 
 interface Genre {
-    id: string;
-    name: string;
+  id: string
+  name: string
 }
 export interface Game {
-    id: string;
-    name: string;
-    released: string;
-    background_image: string;
-    suggestions_count: number;
-    platforms: Platform[];
-    genres: Genre[];
+  id: string
+  name: string
+  released: string
+  background_image: string
+  suggestions_count: number
+  platforms: Platform[]
+  genres: Genre[]
 }
 
 export interface FetchGamesResponse {
-    data: Game[];
+  data: Game[]
 }
 
 function useGames() {
-    const [games, setGames] = useState<Game[]>([]);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    
-    useEffect(()=>{
-            setLoading(true);
-            const controller = new AbortController();
-            apiClient.get<FetchGamesResponse>('/games/infinite-scroll', {
-                signal: controller.signal
-            })
-                .then((response)=>{
-                    setGames(response.data.data);
-                    setLoading(false);
-                }).catch((error)=>{
-                    if( error instanceof CanceledError) return;
-                    setError(error.message);
-                    setLoading(false);
-                })
+  const [games, setGames] = useState<Game[]>([])
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-                return ()=> controller.abort();
-        }, []);
+  useEffect(() => {
+    setLoading(true)
+    const controller = new AbortController()
+    apiClient
+      .get<FetchGamesResponse>('/games/infinite-scroll', {
+        signal: controller.signal,
+      })
+      .then((response) => {
+        console.log(response.data.data[2])
+        setGames(response.data.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        if (error instanceof CanceledError) return
+        setError(error.message)
+        setLoading(false)
+      })
 
-        return {games, error, loading};
-}   
+    return () => controller.abort()
+  }, [])
 
-export default useGames;
+  return { games, error, loading }
+}
+
+export default useGames
