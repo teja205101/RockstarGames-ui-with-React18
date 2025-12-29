@@ -5,6 +5,7 @@ import GenereList from './components/GenereList'
 import { useState } from 'react'
 import { Genre } from './hooks/useGeners'
 import { Button } from '@chakra-ui/react'
+import SearchInput from './components/SearchInput'
 
 export interface GameQuery {
   genre: Genre | null
@@ -25,7 +26,8 @@ function App() {
       >
         {/* <GridItem area="nav" bg="coral">Nav</GridItem> */}
         <GridItem area="nav" display="flex" justifyContent="space-between">
-          <NavBar />{' '}
+          <NavBar />
+          <SearchInput />
           <Button
             onClick={() => {
               setGameQuery({ ...gameQuery, genre: null })
