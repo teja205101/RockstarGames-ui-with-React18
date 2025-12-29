@@ -1,15 +1,17 @@
 import { Input } from '@chakra-ui/react'
+import { InputGroup } from './ui/input-group'
+import { BsSearch } from 'react-icons/bs'
 
 function SearchInput() {
   return (
-    <div>
+    <InputGroup width="100%" startElement={<BsSearch />}>
       <Input
         borderRadius="20px"
         placeholder="Search Games..."
-        variant="outline"
+        variant="subtle"
         onChange={(e) => console.log(e.target.value)}
       />
-    </div>
+    </InputGroup>
   )
 }
 
