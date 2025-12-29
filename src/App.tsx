@@ -46,6 +46,9 @@ function App() {
             onSelectPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
             }
+            onSelectSort={(sort: string) =>
+              setGameQuery({ ...gameQuery, sort })
+            }
           />
         </GridItem>
       </Grid>

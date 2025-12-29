@@ -17,6 +17,7 @@ export interface Game {
   released: string
   background_image: string
   suggestions_count: number
+  rating: number
   platforms: Platform[]
   genres: Genre[]
 }
@@ -38,7 +39,6 @@ function useGames() {
         signal: controller.signal,
       })
       .then((response) => {
-        console.log(response.data.data[2])
         setGames(response.data.data)
         setLoading(false)
       })

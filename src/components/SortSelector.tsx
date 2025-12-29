@@ -7,7 +7,10 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 
-function SortSelector() {
+interface SortSelectorProps {
+  onSelectSort: (sort: string) => void
+}
+function SortSelector({ onSelectSort }: SortSelectorProps) {
   const sortOptions = [
     { value: 'name', label: 'Name' },
     { value: 'suggestions_count', label: 'popularity' },
@@ -26,9 +29,7 @@ function SortSelector() {
           {sortOptions.map((option) => (
             <MenuItem
               key={option.value}
-              onClick={() => {
-                console.log(option.value)
-              }}
+              onClick={() => onSelectSort(option.value)}
             >
               {option.label}
             </MenuItem>

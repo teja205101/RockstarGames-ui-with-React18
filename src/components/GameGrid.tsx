@@ -9,8 +9,13 @@ import SortSelector from './SortSelector'
 interface GameGridProps {
   gameQuery: GameQuery
   onSelectPlatform: (platform: string) => void
+  onSelectSort: (sort: string) => void
 }
-function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
+function GameGrid({
+  gameQuery,
+  onSelectPlatform,
+  onSelectSort,
+}: GameGridProps) {
   const { games, error, loading } = useGames()
   const skeletons = [1, 2, 3, 4, 5, 6]
 
@@ -25,9 +30,20 @@ function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
         )
       : true
 
-    // const sortMatch = gameQuery.sort ? game
-
     return genreMatch && platformMatch
+  })
+
+  const sortedGames = [...filteredGames].sort((a, b) => {
+    if (gameQuery.sort === 'name') {
+      return a.name.localeCompare(b.name)
+    } else if (gameQuery.sort === 'suggestions_count') {
+      return b.suggestions_count - a.suggestions_count
+    } else if (gameQuery.sort === 'rating') {
+      return b?.rating - a?.rating
+    } else if (gameQuery.sort === 'released') {
+      return new Date(b.released).getTime() - new Date(a.released).getTime()
+    }
+    return 0
   })
 
   return (
@@ -37,7 +53,7 @@ function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
         <PlatformSelector
           setPlatform={(platform) => onSelectPlatform(platform)}
         />
-        <SortSelector />
+        <SortSelector onSelectSort={(sort: string) => onSelectSort(sort)} />
       </HStack>
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
@@ -46,7 +62,7 @@ function GameGrid({ gameQuery, onSelectPlatform }: GameGridProps) {
       >
         {loading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {filteredGames.map((game) => (
+        {sortedGames.map((game) => (
           <GameCard game={game} key={game.id} />
         ))}
       </SimpleGrid>
