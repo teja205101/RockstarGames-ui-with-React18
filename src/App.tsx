@@ -25,16 +25,9 @@ function App() {
         }}
       >
         {/* <GridItem area="nav" bg="coral">Nav</GridItem> */}
-        <GridItem area="nav" display="flex" justifyContent="space-between">
-          <NavBar />
-          <SearchInput />
-          <Button
-            onClick={() => {
-              setGameQuery({ ...gameQuery, genre: null })
-            }}
-          >
-            Clear Filters
-          </Button>
+        <GridItem area="nav">
+          <NavBar setGameQuery={setGameQuery} gameQuery={gameQuery} />
+          {/* <SearchInput /> */}
         </GridItem>
         <GridItem area="aside" hideBelow="lg">
           <GenereList

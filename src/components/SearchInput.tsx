@@ -5,9 +5,9 @@ function SearchInput() {
     <div>
       <Input
         borderRadius="20px"
-        size="lg"
         placeholder="Search Games..."
         variant="outline"
+        onChange={(e) => console.log(e.target.value)}
       />
     </div>
   )
