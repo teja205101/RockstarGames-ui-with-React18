@@ -4,7 +4,14 @@ import { BsSearch } from 'react-icons/bs'
 
 function SearchInput() {
   return (
-    <InputGroup width="100%" startElement={<BsSearch />}>
+    <InputGroup
+      width="100%"
+      startElement={
+        <span>
+          <BsSearch />
+        </span>
+      }
+    >
       <Input
         borderRadius="20px"
         placeholder="Search Games..."
