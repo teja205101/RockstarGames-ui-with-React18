@@ -1,11 +1,4 @@
-import {
-  Menu,
-  Button,
-  MenuTrigger,
-  MenuPositioner,
-  MenuContent,
-  MenuItem,
-} from '@chakra-ui/react'
+import { Menu, Button } from '@chakra-ui/react'
 
 interface SortSelectorProps {
   onSelectSort: (sort: string) => void
@@ -19,23 +12,24 @@ function SortSelector({ onSelectSort }: SortSelectorProps) {
   ]
   return (
     <Menu.Root>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
           Sort
         </Button>
-      </MenuTrigger>
-      <MenuPositioner>
-        <MenuContent>
+      </Menu.Trigger>
+      <Menu.Positioner>
+        <Menu.Content>
           {sortOptions.map((option) => (
-            <MenuItem
+            <Menu.Item
               key={option.value}
+              value={option.value}
               onClick={() => onSelectSort(option.value)}
             >
               {option.label}
-            </MenuItem>
+            </Menu.Item>
           ))}
-        </MenuContent>
-      </MenuPositioner>
+        </Menu.Content>
+      </Menu.Positioner>
     </Menu.Root>
   )
 }
