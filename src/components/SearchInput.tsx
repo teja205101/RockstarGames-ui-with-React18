@@ -3,15 +3,9 @@ import { InputGroup } from './ui/input-group'
 import { BsSearch } from 'react-icons/bs'
 
 function SearchInput() {
+  const Icon = BsSearch as any
   return (
-    <InputGroup
-      width="100%"
-      startElement={
-        <span>
-          <BsSearch />
-        </span>
-      }
-    >
+    <InputGroup width="100%" startElement={<Icon />}>
       <Input
         borderRadius="20px"
         placeholder="Search Games..."
