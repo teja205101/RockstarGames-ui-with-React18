@@ -23,7 +23,7 @@ function PlatformSelector({ setPlatform }: platformSelectorProps) {
               value={platform}
               onClick={() => setPlatform(platform)}
             >
-              {platform}
+              <Menu.ItemText>{platform}</Menu.ItemText>
             </Menu.Item>
           ))}
         </Menu.Content>

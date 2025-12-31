@@ -25,7 +25,7 @@ function SortSelector({ onSelectSort }: SortSelectorProps) {
               value={option.value}
               onClick={() => onSelectSort(option.value)}
             >
-              {option.label}
+              <Menu.ItemText>{option.label}</Menu.ItemText>
             </Menu.Item>
           ))}
         </Menu.Content>
