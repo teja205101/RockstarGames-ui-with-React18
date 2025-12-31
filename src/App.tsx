@@ -4,7 +4,6 @@ import GameGrid from './components/GameGrid'
 import GenereList from './components/GenereList'
 import { useState } from 'react'
 import { Genre } from './hooks/useGeners'
-import { Button } from '@chakra-ui/react'
 import SearchInput from './components/SearchInput'
 
 export interface GameQuery {
