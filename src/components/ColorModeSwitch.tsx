@@ -1,4 +1,4 @@
-import { Button, HStack } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { useColorMode } from './ui/color-mode'
 import { Switch } from './ui/switch'
 

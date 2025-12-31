@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from 'react-icons/md'
 import { SiNintendo } from 'react-icons/si'
 import { BsGlobe } from 'react-icons/bs'
-import { HStack, Icon } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { Platform } from '../hooks/useGames'
 import { IconType } from 'react-icons'
 
@@ -33,6 +33,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const IconComponent = (iconMap[platform.name] || BsGlobe) as any
         return <IconComponent key={platform.id} />
       })}

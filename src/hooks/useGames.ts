@@ -29,10 +29,9 @@ export interface FetchGamesResponse {
 function useGames() {
   const [games, setGames] = useState<Game[]>([])
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
     const controller = new AbortController()
     apiClient
       .get<FetchGamesResponse>('/games/infinite-scroll', {

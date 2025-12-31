@@ -16,10 +16,9 @@ interface FetchPlatformsResponse {
 function usePlatform() {
   const [platforms, setPlatforms] = useState<string[]>([])
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
     const controller = new AbortController()
 
     apiClient
@@ -32,18 +31,17 @@ function usePlatform() {
         )
 
         // Deduplicate platforms by ID using Map
-        let uniquePlatforms = Array.from(
+        const uniquePlatforms = Array.from(
           new Map(
             allPlatforms.map((platform: Platform) => [platform.id, platform]),
           ).values(),
         )
 
-        let platformsArray: string[] = []
-        const filterPlatforms = uniquePlatforms.filter((platform: Platform) =>
-          platformsArray.push(platform.name),
+        const platformsArray = uniquePlatforms.map(
+          (platform: Platform) => platform.name,
         )
 
-        let uniquePlatformsArray: string[] = [...new Set(platformsArray)]
+        const uniquePlatformsArray: string[] = [...new Set(platformsArray)]
 
         setPlatforms(uniquePlatformsArray)
         setLoading(false)

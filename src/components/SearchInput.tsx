@@ -6,6 +6,7 @@ interface SearchInputProps {
   setSearch: (search: string) => void
 }
 function SearchInput({ setSearch }: SearchInputProps) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Icon = BsSearch as any
   return (
     <InputGroup width="100%" startElement={<Icon />}>
