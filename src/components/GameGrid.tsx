@@ -21,11 +21,11 @@ function GameGrid({
   const skeletons = [1, 2, 3, 4, 5, 6]
 
   const filteredGames = games.filter((game) => {
-    const genreMatch = gameQuery.genre
+    const genreMatch = gameQuery?.genre
       ? game?.genres?.some((genre) => genre.name === gameQuery?.genre?.name)
       : true
 
-    const platformMatch = gameQuery.platform
+    const platformMatch = gameQuery?.platform
       ? game?.platforms?.some(
           (platform) => platform.name === gameQuery.platform,
         )
@@ -35,13 +35,13 @@ function GameGrid({
   })
 
   const sortedGames = [...filteredGames].sort((a, b) => {
-    if (gameQuery.sort === 'name') {
+    if (gameQuery?.sort === 'name') {
       return a.name.localeCompare(b.name)
-    } else if (gameQuery.sort === 'suggestions_count') {
+    } else if (gameQuery?.sort === 'suggestions_count') {
       return b.suggestions_count - a.suggestions_count
-    } else if (gameQuery.sort === 'rating') {
+    } else if (gameQuery?.sort === 'rating') {
       return b?.rating - a?.rating
-    } else if (gameQuery.sort === 'released') {
+    } else if (gameQuery?.sort === 'released') {
       return new Date(b.released).getTime() - new Date(a.released).getTime()
     }
     return 0
