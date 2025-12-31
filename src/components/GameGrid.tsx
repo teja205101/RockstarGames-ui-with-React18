@@ -5,6 +5,7 @@ import GameCardSkeleton from './GameCardSkeleton'
 import PlatformSelector from './PlatformSelector'
 import { GameQuery } from '../App'
 import SortSelector from './SortSelector'
+import Header from './Heading'
 
 interface GameGridProps {
   gameQuery: GameQuery | undefined
@@ -54,6 +55,7 @@ function GameGrid({
   return (
     <>
       {error && <Text>{error}</Text>}
+      <Header gameQuery={gameQuery} />
       <HStack gap={2} align="center" padding={5}>
         <PlatformSelector
           setPlatform={(platform) => onSelectPlatform(platform)}
