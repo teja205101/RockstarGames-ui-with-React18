@@ -26,7 +26,6 @@ function App() {
         }}
       >
         {/* <GridItem area="nav" bg="coral">Nav</GridItem> */}
-        {/* {gameQuery.search} */}
         <GridItem area="nav">
           <NavBar gameQuery={gameQuery} setGameQuery={setGameQuery} />
         </GridItem>

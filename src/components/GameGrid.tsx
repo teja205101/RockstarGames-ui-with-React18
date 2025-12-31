@@ -7,9 +7,10 @@ import { GameQuery } from '../App'
 import SortSelector from './SortSelector'
 
 interface GameGridProps {
-  gameQuery: GameQuery
+  gameQuery: GameQuery | undefined
   onSelectPlatform: (platform: string) => void
   onSelectSort: (sort: string) => void
+  search: string | undefined
 }
 function GameGrid({
   gameQuery,
@@ -46,6 +47,11 @@ function GameGrid({
     return 0
   })
 
+  const finalGames = sortedGames.filter((game) => {
+    if (!gameQuery?.search) return game
+    return game.name.toLowerCase().includes(gameQuery?.search?.toLowerCase())
+  })
+
   return (
     <>
       {error && <Text>{error}</Text>}
@@ -62,8 +68,8 @@ function GameGrid({
       >
         {loading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {sortedGames.map((game) => (
-          <GameCard game={game} key={game.id} />
+        {finalGames?.map((game, id) => (
+          <GameCard game={game} key={id} />
         ))}
       </SimpleGrid>
     </>
