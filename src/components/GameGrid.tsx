@@ -10,7 +10,6 @@ interface GameGridProps {
   gameQuery: GameQuery | undefined
   onSelectPlatform: (platform: string) => void
   onSelectSort: (sort: string) => void
-  search: string | undefined
 }
 function GameGrid({
   gameQuery,
