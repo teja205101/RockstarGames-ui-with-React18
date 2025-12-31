@@ -8,7 +8,7 @@ function Header({ gameQuery }: HeadingProps) {
   const title = `${gameQuery?.genre?.name || ''} ${gameQuery?.platform || ''} ${gameQuery?.sort || ''}`
   return (
     <Heading size="2xl" fontWeight="bold" padding={5}>
-      {title ? title : 'All Games'}
+      {title === '' ? 'All Games' : title}
     </Heading>
   )
 }
