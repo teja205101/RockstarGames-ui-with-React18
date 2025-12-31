@@ -14,26 +14,35 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const { inputProps, children, rootRef, trackLabel, thumbLabel, ...rest } =
       props
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SwitchControl = ChakraSwitch.Control as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SwitchThumb = ChakraSwitch.Thumb as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SwitchThumbIndicator = ChakraSwitch.ThumbIndicator as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SwitchIndicator = ChakraSwitch.Indicator as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SwitchLabel = ChakraSwitch.Label as any
+
     return (
       <ChakraSwitch.Root ref={rootRef} {...rest}>
         <ChakraSwitch.HiddenInput ref={ref} {...inputProps} />
-        <ChakraSwitch.Control>
-          <ChakraSwitch.Thumb>
+        <SwitchControl>
+          <SwitchThumb>
             {thumbLabel && (
-              <ChakraSwitch.ThumbIndicator fallback={thumbLabel?.off}>
+              <SwitchThumbIndicator fallback={thumbLabel?.off}>
                 {thumbLabel?.on}
-              </ChakraSwitch.ThumbIndicator>
+              </SwitchThumbIndicator>
             )}
-          </ChakraSwitch.Thumb>
+          </SwitchThumb>
           {trackLabel && (
-            <ChakraSwitch.Indicator fallback={trackLabel?.off}>
+            <SwitchIndicator fallback={trackLabel?.off}>
               {trackLabel?.on}
-            </ChakraSwitch.Indicator>
+            </SwitchIndicator>
           )}
-        </ChakraSwitch.Control>
-        {children != null && (
-          <ChakraSwitch.Label>{children}</ChakraSwitch.Label>
-        )}
+        </SwitchControl>
+        {children != null && <SwitchLabel>{children}</SwitchLabel>}
       </ChakraSwitch.Root>
     )
   },

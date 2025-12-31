@@ -8,26 +8,37 @@ interface platformSelectorProps {
 function PlatformSelector({ setPlatform }: platformSelectorProps) {
   const { platforms } = usePlatform()
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuTrigger = Menu.Trigger as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuPositioner = Menu.Positioner as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuContent = Menu.Content as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuItem = Menu.Item as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuItemText = Menu.ItemText as any
+
   return (
     <Menu.Root>
-      <Menu.Trigger asChild>
+      <MenuTrigger asChild>
         <Button variant="outline" size="sm">
           Platform
         </Button>
-      </Menu.Trigger>
-      <Menu.Positioner>
-        <Menu.Content>
+      </MenuTrigger>
+      <MenuPositioner>
+        <MenuContent>
           {platforms.map((platform, index) => (
-            <Menu.Item
+            <MenuItem
               key={index}
               value={platform}
               onClick={() => setPlatform(platform)}
             >
-              <Menu.ItemText>{platform}</Menu.ItemText>
-            </Menu.Item>
+              <MenuItemText>{platform}</MenuItemText>
+            </MenuItem>
           ))}
-        </Menu.Content>
-      </Menu.Positioner>
+        </MenuContent>
+      </MenuPositioner>
     </Menu.Root>
   )
 }

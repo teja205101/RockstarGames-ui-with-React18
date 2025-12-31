@@ -10,26 +10,37 @@ function SortSelector({ onSelectSort }: SortSelectorProps) {
     { value: 'rating', label: 'Rating' },
     { value: 'released', label: 'Released' },
   ]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuTrigger = Menu.Trigger as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuPositioner = Menu.Positioner as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuContent = Menu.Content as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuItem = Menu.Item as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MenuItemText = Menu.ItemText as any
+
   return (
     <Menu.Root>
-      <Menu.Trigger asChild>
+      <MenuTrigger asChild>
         <Button variant="outline" size="sm">
           Sort
         </Button>
-      </Menu.Trigger>
-      <Menu.Positioner>
-        <Menu.Content>
+      </MenuTrigger>
+      <MenuPositioner>
+        <MenuContent>
           {sortOptions.map((option) => (
-            <Menu.Item
+            <MenuItem
               key={option.value}
               value={option.value}
               onClick={() => onSelectSort(option.value)}
             >
-              <Menu.ItemText>{option.label}</Menu.ItemText>
-            </Menu.Item>
+              <MenuItemText>{option.label}</MenuItemText>
+            </MenuItem>
           ))}
-        </Menu.Content>
-      </Menu.Positioner>
+        </MenuContent>
+      </MenuPositioner>
     </Menu.Root>
   )
 }
