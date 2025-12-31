@@ -5,10 +5,12 @@ interface HeadingProps {
   gameQuery: GameQuery | undefined
 }
 function Header({ gameQuery }: HeadingProps) {
-  const title = `${gameQuery?.genre?.name || ''} ${gameQuery?.platform || ''} ${gameQuery?.sort || ''}`
+  const title =
+    `${gameQuery?.genre?.name || ''} ${gameQuery?.platform || ''} ${gameQuery?.sort || ''}` ||
+    ''
   return (
     <Heading size="2xl" fontWeight="bold" padding={5}>
-      {title === '' ? 'All Games' : title}
+      {title.length > 2 ? title : 'All Games'}
     </Heading>
   )
 }
