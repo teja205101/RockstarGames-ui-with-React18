@@ -27,10 +27,11 @@ function App() {
         <GridItem area="nav">
           <NavBar gameQuery={gameQuery} setGameQuery={setGameQuery} />
         </GridItem>
-        <GridItem area="aside" hideBelow="lg">
+        <GridItem area="aside">
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            width="fit-content"
           />
         </GridItem>
         <GridItem area="main">

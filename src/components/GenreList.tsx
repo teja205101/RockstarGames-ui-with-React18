@@ -5,12 +5,13 @@ import { Genre } from '../hooks/useGenres'
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void
   selectedGenre: Genre | null
+  width?: string
 }
 
-function GenreList({ onSelectGenre, selectedGenre }: GenreListProps) {
+function GenreList({ onSelectGenre, selectedGenre, width }: GenreListProps) {
   const { genres, error, loading } = useGenres()
 
-  if (loading) return <Spinner />
+  if (loading) return <Spinner size="sm" />
 
   if (error) return null
 
